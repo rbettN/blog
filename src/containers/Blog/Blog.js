@@ -5,6 +5,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import axios from 'axios';
+import post from '../../components/Post/Post';
 
 class Blog extends Component {
 
@@ -15,13 +16,20 @@ class Blog extends Component {
     componentDidMount () {
         axios.get('https://jsonplaceholder.typicode.com/posts') /*get returns a promise*/
             .then(response => {
-                this.setState({posts: response.data});
+                const posts = response.data.slice(0, 4);
+                const updatedPosts = posts.map(post => {
+                    return {
+                        ...post,
+                        author: 'Rafa'
+                    }
+                });
+                this.setState({posts: updatedPosts});
             });
     }
     
     render () {
         const posts = this.state.posts.map(post => {
-            return <Post key={post.id} title={post.title} />;
+            return <Post key={post.id} title={post.title} author={post.author}/>;
         });
         return (
             <div>

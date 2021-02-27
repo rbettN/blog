@@ -5,7 +5,7 @@ import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 import './Blog.css';
 import axios from 'axios';
-import post from '../../components/Post/Post';
+//import post from '../../components/Post/Post';
 
 class Blog extends Component {
 

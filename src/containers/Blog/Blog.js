@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 //import axios from '../../axios'
 /*The Route component needs to be imported for routing*/
-/*The Link component allos the creation of Links for switching pages (routing)*/
-import { Route, Link } from 'react-router-dom';
+/*The Link component allos the creation of Links for switching pages (routing).
+The NavLink is similar to Link but it has extra props that allows styling for the active route*/
+import { Route, NavLink } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import NewPost from './NewPost/NewPost';
@@ -17,12 +18,19 @@ class Blog extends Component {
                             {/*the "to" property is the essentially the 'a href=""' but react router
                             will create the anchor tag and prevent the default, which would be to send
                             a new request and instead handle the click on itself*/}
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to={{
+                            <li><NavLink 
+                                to="/" 
+                                exact
+                                activeClassName="my-active"
+                                activeStyle={{
+                                    color: '#fa923f',
+                                    textDecoration: 'underline'    
+                                }} >Home</NavLink></li>
+                            <li><NavLink to={{
                                 pathname: '/new-post',
                                 hash: '#submit',
                                 search: '?quick-submit=true'
-                            }}>New Post</Link></li>
+                            }}>New Post</NavLink></li>
                         </ul>
                     </nav>
                 </header>

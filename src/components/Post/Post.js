@@ -1,4 +1,7 @@
 import React from 'react';
+/*withRouter is a high order component which can be used to wrap the export. In this case, this allows props
+from Posts to be passed on to Post (since Posts is the Post's nearest loaded route)*/
+/*import { withRouter } from 'react-router-dom';*/
 
 import './Post.css';
 
@@ -12,3 +15,4 @@ const post = (props) => (
 );
 
 export default post;
+/*export default withRouter(post);*/

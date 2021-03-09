@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 //import axios from '../../axios'
 /*The Route component needs to be imported for routing*/
-/*The Link component allos the creation of Links for switching pages (routing).
+/*The Link component allows the creation of Links for switching pages (routing).
 The NavLink is similar to Link but it has extra props that allows styling for the active route*/
 import { Route, NavLink } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import NewPost from './NewPost/NewPost';
+import Post from './FullPost/FullPost';
 
 class Blog extends Component {
     render () {
@@ -39,6 +40,8 @@ class Blog extends Component {
                 <Route path="/" render={() => <h1>Home 2</h1>}/>*/}
                 <Route path="/" exact component={Posts}/>
                 <Route path="/new-post" component={NewPost}/>
+                <Route path="/:id" exact component={Post}/>
+
             </div>
         );
     }

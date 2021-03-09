@@ -17,7 +17,7 @@ instance.interceptors.request.use(request => {
 
 instance.interceptors.response.use(response => {
     console.log(response);
-    return response;
+    return response; /*The return for the response must be used. Otherwise, the response is blocked.*/
 }, error => {
     console.log(error);
     return Promise.reject(error);

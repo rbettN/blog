@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import axios from '../../axios'
 /*The Route component needs to be imported for routing*/
-import { Route } from 'react-router-dom';
+/*The Link component allos the creation of Links for switching pages (routing)*/
+import { Route, Link } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import NewPost from './NewPost/NewPost';
@@ -13,8 +14,15 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/new-post">New Post</a></li>
+                            {/*the "to" property is the essentially the 'a href=""' but react router
+                            will create the anchor tag and prevent the default, which would be to send
+                            a new request and instead handle the click on itself*/}
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to={{
+                                pathname: '/new-post',
+                                hash: '#submit',
+                                search: '?quick-submit=true'
+                            }}>New Post</Link></li>
                         </ul>
                     </nav>
                 </header>

@@ -24,7 +24,9 @@ class NewPost extends Component {
         axios.post('/posts', post)
             .then(response => {
                 console.log(response);
-                this.setState({submitted: true});
+                //this.setState({submitted: true});       /*using the state (in this case, the Redirect) replaces the current page so moving back to the previous page is not possible*/
+                //this.props.history.push('/posts');    /*hitory through push adds the current page to the stack so it allows to move back to the previous page*/
+                this.props.history.replace('/posts');    /*hitory through replace works the same way as Redirect; it doesnt allow moving back to the previous page*/
             });
     }
 

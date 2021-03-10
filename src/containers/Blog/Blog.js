@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 /*The Link component allows the creation of Links for switching pages (routing).
 The NavLink is similar to Link but it has extra props that allows styling for the active route.
 The Switch component tells react router which Route to load (the first one that matches), i.e.,
-only the first match is loaded.*/
+only the first match is loaded.
+The Redirect component is used in JSX code. It can be added to the Switch component.*/
 
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import NewPost from './NewPost/NewPost';
@@ -43,6 +44,8 @@ class Blog extends Component {
                 <Switch>
                     <Route path="/new-post" component={NewPost}/>
                     <Route path="/posts" component={Posts}/>
+                    <Redirect from="/" to="/posts"/>
+                    {/*<Route path="/" component={Posts}/>*/}
                 </Switch>
             </div>
         );

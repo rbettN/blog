@@ -10,7 +10,6 @@ import { Route, NavLink, Switch } from 'react-router-dom';
 import './Blog.css';
 import Posts from './Posts/Posts'
 import NewPost from './NewPost/NewPost';
-import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
     render () {
@@ -23,7 +22,7 @@ class Blog extends Component {
                             will create the anchor tag and prevent the default, which would be to send
                             a new request and instead handle the click on itself*/}
                             <li><NavLink 
-                                to="/" 
+                                to="/posts/" 
                                 exact
                                 activeClassName="my-active"
                                 activeStyle={{
@@ -41,12 +40,10 @@ class Blog extends Component {
                 {/*exact is a boolean property*/}
                 {/*<Route path="/" exact render={() => <h1>Home</h1>}/> 
                 <Route path="/" render={() => <h1>Home 2</h1>}/>*/}
-                <Route path="/" exact component={Posts}/>
                 <Switch>
                     <Route path="/new-post" component={NewPost}/>
-                    <Route path="/:id" exact component={FullPost}/>
+                    <Route path="/posts" component={Posts}/>
                 </Switch>
-
             </div>
         );
     }

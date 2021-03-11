@@ -8,6 +8,7 @@ class App extends Component {
   render() {
     return (
       /*It is possible to use routing in any component wrapped by the wrapping <BrowserRouter> component*/
+      //<BrowserRouter basename="/my-app"/> basename needs to be set it we are serving from a sub directory
       <BrowserRouter>
         <div className="App">
           <Blog />

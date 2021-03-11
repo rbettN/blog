@@ -8,13 +8,18 @@ only the first match is loaded.
 The Redirect component is used in JSX code. It can be added to the Switch component.*/
 
 import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
+import asyncComponent from '../../highordercomponent/asyncComponent';
 import './Blog.css';
 import Posts from './Posts/Posts'
-import NewPost from './NewPost/NewPost';
+//import NewPost from './NewPost/NewPost'; /*Commented this to check how to use Code Splitting/Lazy Loading*/
+
+const AsyncNewPost = asyncComponent (() => {
+    return import('./NewPost/NewPost');
+});
 
 class Blog extends Component {
     state = {
-        auth: false
+        auth: true
     }
     render () {
         return (
@@ -45,7 +50,7 @@ class Blog extends Component {
                 {/*<Route path="/" exact render={() => <h1>Home</h1>}/> 
                 <Route path="/" render={() => <h1>Home 2</h1>}/>*/}
                 <Switch>
-                    {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null}
+                    {this.state.auth ? <Route path="/new-post" component={AsyncNewPost}/> : null}
                     <Route path="/posts" component={Posts}/>
                     <Route render={() => <h1>Not Found</h1>}/>
                     {/*<Redirect from="/" to="/posts"/>*/}
